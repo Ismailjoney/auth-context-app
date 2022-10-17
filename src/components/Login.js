@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/UserContext';
 
 const Login = () => {
     const {singInUser} = useContext(AuthContext);
+    const navigate = useNavigate()
 
     const handdleSubmit = event => {
         event.preventDefault()
@@ -16,6 +18,8 @@ const Login = () => {
         .then(resualt => {
             const user = resualt.user;
             console.log(user)
+            form.reset();
+            navigate(`/`)
         })
         .catch(error => {
             console.error(`error`,error)
@@ -48,6 +52,7 @@ const Login = () => {
                                 </label>
                             </div>
                             <div className="form-control mt-6">
+                                
                                 <button className="btn btn-primary">Login</button>
                             </div>
                         </form>

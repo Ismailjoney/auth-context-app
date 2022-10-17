@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
+import { AuthContext } from '../context/UserContext';
  
 
 const Home = () => {
+    const {user} =useContext(AuthContext)
     return (
         <div>
-            <h2>I am form home</h2>
+            <h2>I am form home{user?.email }</h2>
         </div>
     );
 };
